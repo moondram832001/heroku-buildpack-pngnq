@@ -1,5 +1,9 @@
-#!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
+#!/bin/sh
+
+set -e
+
+BUILD_DIR=$1
+CACHE_DIR=$2
 
 echo "-----> Installing pngnq"
 
@@ -15,5 +19,7 @@ mkdir -p vendor/pngnq
 # untar the binary to the directory we want
 tar -C vendor/pngnq -xvf pngnq.tar.gz?dl=0 
 
-PATH=/app/vendor/pngnq/pngnq_bin/:$PATH
-export PATH
+mkdir -p $BUILD_DIR/.profile.d
+cat <<EOF >$BUILD_DIR/.profile.d/000_pngnq.sh
+export PATH="/app/vendor/pngnq/pngnq_bin/:$PATH"
+EOF
