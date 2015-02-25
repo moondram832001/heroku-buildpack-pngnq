@@ -14,3 +14,6 @@ mkdir -p vendor/pngnq
 
 # untar the binary to the directory we want
 tar -C vendor/pngnq -xvf pngnq.tar.gz?dl=0 
+
+PATH=/app/vendor/pngnq/pngnq_bin/:$PATH
+export PATH
